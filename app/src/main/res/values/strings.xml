@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Upiicsa Tutorias</string>
+    <string name="text_hint_number_boleta">Número de boleta</string>
+    <string name="text_hint_password">Contraseña</string>
+    <string name="text_sign_in">iniciar sesión</string>
+    <string name="text_sign_up">Registrar</string>
+    <string name="title_sign_up">Registro</string>
+    <string name="title_welcome">Bienvenido</string>
+    <string name="text_instructions_sign_up">Por favor, ingresa la siguiente información</string>
+    <string name="text_hint_name_sign_up">Nombre</string>
+    <string name="text_hint_last_name_sign_up">Apellido paterno</string>
+    <string name="text_hint_mother_last_name_sign_up">Apellido materno</string>
+    <string name="text_hint_password_confirm">Confirmar contraseña</string>
+</resources>

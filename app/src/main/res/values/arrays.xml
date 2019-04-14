@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="career_types">
+        <item>Lic Ciencias Informática</item>
+        <item>Lic Adminsitración industrial</item>
+        <item>Ing Informática</item>
+    </string-array>
+</resources>
