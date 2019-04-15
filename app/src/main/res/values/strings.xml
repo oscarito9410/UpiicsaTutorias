@@ -11,4 +11,5 @@
     <string name="text_hint_last_name_sign_up">Apellido paterno</string>
     <string name="text_hint_mother_last_name_sign_up">Apellido materno</string>
     <string name="text_hint_password_confirm">Confirmar contraseña</string>
+    <string name="text_field_required">Campo requerido</string>
 </resources>

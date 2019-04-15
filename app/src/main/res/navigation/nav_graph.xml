@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/nav_graph" app:startDestination="@id/signInFragment">
 
     <fragment android:id="@+id/signUpFragment"
               android:name="com.booleansystems.tutorias.ui.SignUpFragment"
+              tools:layout="@layout/fragment_sign_up"
               android:label="SignUpFragment"/>
 
     <fragment android:id="@+id/signInFragment"
-              android:name="com.booleansystems.tutorias.ui.SignInFragment"
+              android:name="com.booleansystems.tutorias.ui.login.SignInFragment"
+              tools:layout="@layout/fragment_sign_in"
               android:label="SignInFragment">
 
         <action android:id="@+id/action_signInFragment_to_signUpFragment"
