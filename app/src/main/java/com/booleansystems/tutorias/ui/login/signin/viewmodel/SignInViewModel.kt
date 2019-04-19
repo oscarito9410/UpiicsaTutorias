@@ -39,6 +39,7 @@ class SignInViewModel(val preferenceHelper: PreferenceHelper) : ViewModel() {
             toastMessageEvent.value = R.string.error_min_length_boleta
 
         if (!errorBoleta.value!! && !errorPassword.value!!)
+
             isCorrectInfo.value = true
     }
 

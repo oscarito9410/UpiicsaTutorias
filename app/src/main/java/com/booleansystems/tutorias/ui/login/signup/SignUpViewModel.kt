@@ -4,6 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.view.View
 import com.booleansystems.tutorias.Constants
+import com.booleansystems.tutorias.Constants.Companion.USER_BOLETA
+import com.booleansystems.tutorias.Constants.Companion.USER_NAME
+import com.booleansystems.tutorias.Constants.Companion.USER_PASSWORD
 import com.booleansystems.tutorias.R
 import com.booleansystems.tutorias.dependencies.PreferenceHelper
 import com.booleansystems.tutorias.dependencies.SingleLiveEvent
@@ -12,7 +15,7 @@ import com.booleansystems.tutorias.dependencies.SingleLiveEvent
  * Created by oscar on 18/04/19
  * operez@na-at.com.mx
  */
-class SignUpViewModel(val preferenceHelper: PreferenceHelper) : ViewModel() {
+open class SignUpViewModel(val preferenceHelper: PreferenceHelper) : ViewModel() {
     val boleta = MutableLiveData<String>()
     val name = MutableLiveData<String>()
     val lastName = MutableLiveData<String>()
@@ -53,6 +56,16 @@ class SignUpViewModel(val preferenceHelper: PreferenceHelper) : ViewModel() {
                 !errorMotherLastName.value!! &&
                 !errorPassword.value!! &&
                 !errorConfirmPassword.value!!
+
+        if (isCorrectInfo.value!!) {
+            preferenceHelper.defaultPrefs().edit()
+                .putString(USER_NAME, name.value + " " + lastName.value + " " + motherLastName.value)
+                .apply()
+            preferenceHelper.defaultPrefs().edit().putString(USER_BOLETA, boleta.value).apply()
+
+            preferenceHelper.defaultPrefs().edit().putString(USER_PASSWORD, password.value).apply()
+
+        }
 
     }
 
