@@ -59,10 +59,8 @@ open class SignUpViewModel(val preferenceHelper: PreferenceHelper) : ViewModel()
 
         if (isCorrectInfo.value!!) {
             preferenceHelper.defaultPrefs().edit()
-                .putString(USER_NAME, name.value + " " + lastName.value + " " + motherLastName.value)
-                .apply()
+                .putString(USER_NAME, name.value + " " + lastName.value + " " + motherLastName.value).apply()
             preferenceHelper.defaultPrefs().edit().putString(USER_BOLETA, boleta.value).apply()
-
             preferenceHelper.defaultPrefs().edit().putString(USER_PASSWORD, password.value).apply()
 
         }

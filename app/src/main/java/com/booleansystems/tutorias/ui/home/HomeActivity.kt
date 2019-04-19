@@ -1,13 +1,16 @@
 package com.booleansystems.tutorias.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.booleansystems.tutorias.R
+import androidx.appcompat.app.AppCompatActivity
+
 
 class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(com.booleansystems.tutorias.R.layout.activity_home)
+
     }
+
+
 }

@@ -18,4 +18,6 @@ val DataRepository = module(definition = {
     viewModel { SignInViewModel(get()) }
 
     viewModel { SignUpViewModel(get()) }
+
+
 })

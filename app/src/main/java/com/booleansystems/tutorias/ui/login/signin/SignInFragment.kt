@@ -1,14 +1,11 @@
 package com.booleansystems.tutorias.ui.login.signin
 
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import androidx.annotation.StringRes
-import com.google.android.material.textfield.TextInputLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.booleansystems.tutorias.R
 import com.booleansystems.tutorias.base.BaseFieldObserver
