@@ -1,9 +1,10 @@
 package com.booleansystems.tutorias.ui.login.signup
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import android.view.View
 import com.booleansystems.tutorias.Constants
+import com.booleansystems.tutorias.R
 import com.booleansystems.tutorias.dependencies.SingleLiveEvent
 
 /**
@@ -39,9 +40,11 @@ class SignUpViewModel : ViewModel() {
         errorName.value = name.value.isNullOrEmpty()
         errorLastName.value = lastName.value.isNullOrEmpty()
         errorMotherLastName.value = motherLastName.value.isNullOrEmpty()
-        errorConfirmPassword.value = confirmPassword.value.isNullOrEmpty() || password != confirmPassword
+        errorConfirmPassword.value = !password.value.equals(confirmPassword.value)
         errorPassword.value = password.value.isNullOrEmpty()
 
+        if (errorBoleta.value!!)
+            toastMessageEvent.value = R.string.error_min_length_boleta
 
 
         isCorrectInfo.value = !errorBoleta.value!! &&

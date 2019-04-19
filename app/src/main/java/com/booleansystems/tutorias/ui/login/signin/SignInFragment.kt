@@ -1,11 +1,11 @@
 package com.booleansystems.tutorias.ui.login.signin
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.annotation.StringRes
-import android.support.design.widget.TextInputLayout
+import androidx.annotation.StringRes
+import com.google.android.material.textfield.TextInputLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +17,7 @@ import com.booleansystems.tutorias.databinding.FragmentSignInBinding
 import com.booleansystems.tutorias.ui.home.HomeActivity
 import com.booleansystems.tutorias.ui.login.signin.viewmodel.SignInViewModel
 import kotlinx.android.synthetic.main.fragment_sign_in.*
+import org.koin.android.architecture.ext.getViewModel
 
 /**
 
@@ -34,7 +35,7 @@ class SignInFragment : BaseFragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mBinding = FragmentSignInBinding.inflate(layoutInflater, container, false)
-        val viewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java)
+        val viewModel =getViewModel<SignInViewModel>()
         mBinding!!.viewModel = viewModel
         mBinding!!.lifecycleOwner = this
         return mBinding!!.root

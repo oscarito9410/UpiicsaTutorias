@@ -1,8 +1,7 @@
 package com.booleansystems.tutorias.base
 
-import android.arch.lifecycle.Observer
-import android.support.annotation.StringRes
-import android.support.design.widget.TextInputLayout
+import androidx.lifecycle.Observer
+import com.google.android.material.textfield.TextInputLayout
 import com.booleansystems.tutorias.R
 import com.booleansystems.tutorias.Utils
 

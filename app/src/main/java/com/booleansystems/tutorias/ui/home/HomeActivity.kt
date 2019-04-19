@@ -1,6 +1,6 @@
 package com.booleansystems.tutorias.ui.home
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.booleansystems.tutorias.R
 

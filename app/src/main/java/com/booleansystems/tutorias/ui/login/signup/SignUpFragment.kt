@@ -1,6 +1,8 @@
 package com.booleansystems.tutorias.ui.login.signup
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +11,9 @@ import com.booleansystems.tutorias.R
 import com.booleansystems.tutorias.base.BaseFieldObserver
 import com.booleansystems.tutorias.base.BaseFragment
 import com.booleansystems.tutorias.databinding.FragmentSignUpBinding
+import com.booleansystems.tutorias.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.fragment_sign_up.*
+import org.koin.android.architecture.ext.getViewModel
 
 /**
 
@@ -27,7 +31,7 @@ class SignUpFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mBinding = FragmentSignUpBinding.inflate(layoutInflater, container, false)
-        val viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
+        val viewModel = getViewModel<SignUpViewModel>()
         mBinding!!.viewModel = viewModel
         mBinding!!.lifecycleOwner = this
         return mBinding!!.root
@@ -39,10 +43,17 @@ class SignUpFragment : BaseFragment() {
         mBinding!!.viewModel!!.errorLastName.observe(this, BaseFieldObserver(ilLastNameSignUp))
         mBinding!!.viewModel!!.errorMotherLastName.observe(this, BaseFieldObserver(ilMotherLastNameSignUp))
         mBinding!!.viewModel!!.errorPassword.observe(this, BaseFieldObserver(ilPasswordSignUp))
-        mBinding!!.viewModel!!.errorConfirmPassword.observe(this, BaseFieldObserver(ilPasswordConfirmSignUp,
-            R.string.error_confirm_password))
+        mBinding!!.viewModel!!.errorConfirmPassword.observe(
+            this,
+            BaseFieldObserver(ilPasswordConfirmSignUp, R.string.error_confirm_password)
+        )
+        mBinding!!.viewModel!!.toastMessageEvent.observe(this, Observer { t -> showSingleToast(t!!) })
+        mBinding!!.viewModel!!.isCorrectInfo.observe(this, Observer { if (it!!) notifyNavigateHome() })
         super.onActivityCreated(savedInstanceState)
+    }
 
+    fun notifyNavigateHome() {
+        activity!!.startActivity(Intent(context, HomeActivity::class.java))
     }
 }
 
