@@ -1,16 +1,21 @@
-package com.booleansystems.tutorias.ui.login
+package com.booleansystems.tutorias.ui.login.signin
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
+import android.support.annotation.StringRes
+import android.support.design.widget.TextInputLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.booleansystems.tutorias.R
+import com.booleansystems.tutorias.base.BaseFieldObserver
 import com.booleansystems.tutorias.base.BaseFragment
 import com.booleansystems.tutorias.databinding.FragmentSignInBinding
-import com.booleansystems.tutorias.ui.login.viewmodel.SignInViewModel
+import com.booleansystems.tutorias.ui.home.HomeActivity
+import com.booleansystems.tutorias.ui.login.signin.viewmodel.SignInViewModel
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 
 /**
@@ -31,17 +36,20 @@ class SignInFragment : BaseFragment(), View.OnClickListener {
         mBinding = FragmentSignInBinding.inflate(layoutInflater, container, false)
         val viewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java)
         mBinding!!.viewModel = viewModel
-        mBinding!!.viewModel!!.getErrorBoleta().observe(this, Observer { t ->
-            ilBoletaSignUp.isErrorEnabled = t!!
-            ilBoletaSignUp.error = if (t) getString(R.string.text_field_required) else null
-        })
-        mBinding!!.viewModel!!.getErrorPassword().observe(this, Observer { t ->
-            ilPasswordSignUp.isErrorEnabled = t!!
-            ilPasswordSignUp.error = if (t) getString(R.string.text_field_required) else null
-        })
-
         mBinding!!.lifecycleOwner = this
         return mBinding!!.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        mBinding!!.viewModel!!.errorBoleta.observe(this,  BaseFieldObserver(ilBoletaSignIn!!))
+        mBinding!!.viewModel!!.errorPassword.observe(this, BaseFieldObserver(ilPasswordSignIn!!))
+        mBinding!!.viewModel!!.isCorrectInfo.observe(this, Observer { if (it!!) notifyNavigateHome() })
+        mBinding!!.viewModel!!.toastMessageEvent.observe(this, Observer { t -> showSingleToast(t!!) })
+        super.onActivityCreated(savedInstanceState)
+    }
+
+    fun notifyNavigateHome() {
+        activity!!.startActivity(Intent(context, HomeActivity::class.java))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

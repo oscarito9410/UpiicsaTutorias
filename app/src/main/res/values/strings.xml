@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Upiicsa Tutorias</string>
+    <string name="app_name">Coordinación de tutorías Upiicsa</string>
     <string name="text_hint_number_boleta">Número de boleta</string>
     <string name="text_hint_password">Contraseña</string>
     <string name="text_sign_in">iniciar sesión</string>
@@ -12,4 +12,7 @@
     <string name="text_hint_mother_last_name_sign_up">Apellido materno</string>
     <string name="text_hint_password_confirm">Confirmar contraseña</string>
     <string name="text_field_required">Campo requerido</string>
+    <string name="title_choose_career">Elige tu carrera</string>
+    <string name="error_min_length_boleta">El número de boleta consta de 10 digitos</string>
+    <string name="error_confirm_password">La confirmación de password no coincide</string>
 </resources>

@@ -5,7 +5,7 @@
 
         <variable
                 name="viewModel"
-                type="com.booleansystems.tutorias.ui.login.viewmodel.SignInViewModel"/>
+                type="com.booleansystems.tutorias.ui.login.signin.viewmodel.SignInViewModel"/>
     </data>
 
     <RelativeLayout
@@ -50,7 +50,7 @@
 
 
                     <android.support.design.widget.TextInputLayout
-                            android:id="@+id/ilBoletaSignUp"
+                            android:id="@+id/ilBoletaSignIn"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/text_hint_number_boleta"
@@ -64,7 +64,7 @@
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
-                            android:id="@+id/ilPasswordSignUp"
+                            android:id="@+id/ilPasswordSignIn"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/text_hint_password"
