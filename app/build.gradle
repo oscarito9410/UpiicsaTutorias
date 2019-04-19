@@ -45,7 +45,14 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.0.0-beta01'
+    // koin version
+    def koin_version = '1.0.2'
     implementation "org.koin:koin-android-architecture:0.9.1"
+
+    // Koin for Android
+    implementation "org.koin:koin-android:$koin_version"
+    // or Koin for view model features
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
 
 
 }
