@@ -17,7 +17,7 @@ import com.booleansystems.tutorias.databinding.FragmentSignInBinding
 import com.booleansystems.tutorias.ui.home.HomeActivity
 import com.booleansystems.tutorias.ui.login.signin.viewmodel.SignInViewModel
 import kotlinx.android.synthetic.main.fragment_sign_in.*
-import org.koin.android.architecture.ext.getViewModel
+import org.koin.android.viewmodel.ext.android.getViewModel
 
 /**
 

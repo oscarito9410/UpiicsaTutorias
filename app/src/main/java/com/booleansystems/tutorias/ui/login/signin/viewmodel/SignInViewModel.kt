@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import android.view.View
 import com.booleansystems.tutorias.Constants.Companion.MAX_LENGTH_BOLETA
 import com.booleansystems.tutorias.R
+import com.booleansystems.tutorias.dependencies.PreferenceHelper
 import com.booleansystems.tutorias.dependencies.SingleLiveEvent
 
 /**
@@ -12,7 +13,7 @@ import com.booleansystems.tutorias.dependencies.SingleLiveEvent
 Created by oscar on 14/04/19
 operez@na-at.com.mx
  */
-class SignInViewModel : ViewModel() {
+class SignInViewModel(val preferenceHelper: PreferenceHelper) : ViewModel() {
 
     val password = MutableLiveData<String>()
 

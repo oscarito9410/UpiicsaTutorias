@@ -9,7 +9,13 @@ import android.preference.PreferenceManager
 Created by oscar on 18/04/19
 operez@na-at.com.mx
  */
-object PreferenceHelper {
+class PreferenceHelper(context: Context) {
+
+    private var mContext: Context? = null
+
+    init {
+        mContext = context
+    }
 
     /**
      *  val prefs = defaultPrefs(this)
@@ -17,10 +23,10 @@ object PreferenceHelper {
     val value: String? = prefs[Consts.SharedPrefs.KEY] //getter
     val anotherValue: Int? = prefs[Consts.SharedPrefs.KEY, 10] //getter with default value
      */
-    fun defaultPrefs(context: Context): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+    fun defaultPrefs(): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext)
 
-    fun customPrefs(context: Context, name: String): SharedPreferences =
-        context.getSharedPreferences(name, Context.MODE_PRIVATE)
+    fun customPrefs(name: String): SharedPreferences =
+        mContext!!.getSharedPreferences(name, Context.MODE_PRIVATE)
 
     inline fun SharedPreferences.edit(operation: (SharedPreferences.Editor) -> Unit) {
         val editor = this.edit()
@@ -47,7 +53,7 @@ object PreferenceHelper {
      * [T] is the type of value
      * @param defaultValue optional default value - will take null for strings, false for bool and -1 for numeric values if [defaultValue] is not specified
      */
-    operator inline fun <reified T : Any> SharedPreferences.get(key: String, defaultValue: T? = null): T? {
+    inline operator fun <reified T : Any> SharedPreferences.get(key: String, defaultValue: T? = null): T? {
         return when (T::class) {
             String::class -> getString(key, defaultValue as? String) as T?
             Int::class -> getInt(key, defaultValue as? Int ?: -1) as T?

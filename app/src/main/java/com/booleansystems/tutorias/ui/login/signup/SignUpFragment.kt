@@ -13,7 +13,7 @@ import com.booleansystems.tutorias.base.BaseFragment
 import com.booleansystems.tutorias.databinding.FragmentSignUpBinding
 import com.booleansystems.tutorias.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.fragment_sign_up.*
-import org.koin.android.architecture.ext.getViewModel
+import org.koin.android.viewmodel.ext.android.getViewModel
 
 /**
 
