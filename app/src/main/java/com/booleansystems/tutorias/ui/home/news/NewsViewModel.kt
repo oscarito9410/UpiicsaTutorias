@@ -16,27 +16,34 @@ class NewsViewModel : ViewModel() {
 
     val isLoading = MutableLiveData<Boolean>()
 
+    var originaListArticles = arrayListOf<Article>()
+
     init {
         isLoading!!.value = false
     }
 
 
     fun loadNews() {
-        isLoading!!.value = true
-        val parser = Parser()
-        parser.onFinish(object : Parser.OnTaskCompleted {
-            override fun onTaskCompleted(list: ArrayList<Article>) {
-                setArticleList(list)
-                Thread.sleep(4000)
-                isLoading.value = false
-            }
+        if (originaListArticles.isNullOrEmpty()) {
+            isLoading!!.value = true
+            val parser = Parser()
+            parser.onFinish(object : Parser.OnTaskCompleted {
+                override fun onTaskCompleted(list: ArrayList<Article>) {
+                    originaListArticles = list
+                    setArticleList(list)
+                    isLoading.value = false
+                }
 
-            override fun onError() {
-                isLoading.value = false
-            }
+                override fun onError() {
+                    isLoading.value = false
+                }
 
-        })
-        parser.execute(Constants.APIConfig.URL_FEED)
+            })
+            parser.execute(Constants.APIConfig.URL_FEED)
+        } else {
+            setArticleList(originaListArticles)
+        }
+
     }
 
 

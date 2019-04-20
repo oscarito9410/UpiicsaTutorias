@@ -50,7 +50,7 @@ class NewsAdapter(val context: Context, val listArticles: List<Article>) :
             val finalDescription = article.description.replace("(Feed generated with <a href=\"http://fetchrss.com\" target=\"_blank\">FetchRSS</a>)", "")
             Picasso.get().load(finalImage).into(itemView.imgNew)
             itemView.tvNewTitle.text = article.title
-            itemView.tvNewDescription.text = Utils.removeTags(finalDescription)
+            itemView.tvNewDescription.text = Utils.removeTags(finalDescription)!!.trimEnd()
         }
 
     }
