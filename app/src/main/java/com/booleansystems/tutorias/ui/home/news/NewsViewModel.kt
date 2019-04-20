@@ -12,19 +12,42 @@ import com.prof.rssparser.Parser
  */
 class NewsViewModel : ViewModel() {
 
-    val listArticles: MutableLiveData<ArrayList<Article>>? = null
+    lateinit var listArticles: MutableLiveData<MutableList<Article>>
+
+    val isLoading = MutableLiveData<Boolean>()
+
+    init {
+        isLoading!!.value = false
+    }
+
 
     fun loadNews() {
+        isLoading!!.value = true
         val parser = Parser()
         parser.onFinish(object : Parser.OnTaskCompleted {
             override fun onTaskCompleted(list: ArrayList<Article>) {
-                listArticles!!.value = list
+                setArticleList(list)
+                Thread.sleep(4000)
+                isLoading.value = false
             }
 
             override fun onError() {
+                isLoading.value = false
             }
 
         })
         parser.execute(Constants.APIConfig.URL_FEED)
+    }
+
+
+    fun getArticleList(): MutableLiveData<MutableList<Article>> {
+        if (!::listArticles.isInitialized) {
+            listArticles = MutableLiveData()
+        }
+        return listArticles
+    }
+
+    private fun setArticleList(articleList: MutableList<Article>) {
+        listArticles.postValue(articleList)
     }
 }

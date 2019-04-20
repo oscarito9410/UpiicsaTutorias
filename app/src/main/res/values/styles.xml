@@ -16,6 +16,12 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="CustomDialogTranslucent" parent="android:Theme.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 
     <style name="MultiCurrencyTextParagraph1Black">
         <item name="android:layout_width">wrap_content</item>
