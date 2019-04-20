@@ -19,13 +19,13 @@ class NewsViewModel : ViewModel() {
     var originaListArticles = arrayListOf<Article>()
 
     init {
-        isLoading!!.value = false
+        isLoading.value = false
     }
 
 
     fun loadNews() {
         if (originaListArticles.isNullOrEmpty()) {
-            isLoading!!.value = true
+            isLoading.value = true
             val parser = Parser()
             parser.onFinish(object : Parser.OnTaskCompleted {
                 override fun onTaskCompleted(list: ArrayList<Article>) {

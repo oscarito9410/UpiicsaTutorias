@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/small_separation"
+              android:layout_marginBottom="@dimen/small_separation">
+
+    <TextView
+            android:id="@+id/tvSearchSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lógica de programación"
+            android:padding="@dimen/small_separation"
+            style="@style/MultiCurrencyTextParagraph2Black"
+            android:layout_marginTop="@dimen/small_separation_3"
+            android:layout_marginStart="@dimen/small_separation"
+            android:textSize="16sp"
+            android:layout_marginEnd="@dimen/small_separation"/>
+
+</LinearLayout>

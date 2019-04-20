@@ -1,55 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+
+<layout>
+    <data>
+        <variable name="viewModel" type="com.booleansystems.tutorias.ui.home.search.SearchViewModel"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
 
 
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/normal_separation"
-              android:layout_marginStart="@dimen/normal_separation"
-              style="@style/MultiCurrencyTextParagraph1Black"
-              android:text="@string/title_search_fragment"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="@dimen/normal_separation"
+                  android:layout_marginStart="@dimen/normal_separation"
+                  style="@style/MultiCurrencyTextParagraph1Black"
+                  android:text="@string/title_search_fragment"/>
 
-    <androidx.appcompat.widget.SearchView android:layout_width="match_parent"
-                                          android:layout_height="wrap_content"
-                                          app:iconifiedByDefault="false"/>
+        <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchViewFilter"
+                android:layout_width="match_parent"
+                                              android:layout_height="wrap_content"
+                                              app:iconifiedByDefault="false"/>
 
 
-    <info.hoang8f.android.segmented.SegmentedGroup
-            android:id="@+id/sg_options_benefits"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:layout_marginStart="@dimen/normal_separation"
-            android:layout_marginEnd="@dimen/normal_separation"
-            app:sc_border_width="1dp"
-            app:sc_tint_color="@color/colorPrimary"
-            app:sc_checked_text_color="@android:color/white"
-            app:sc_corner_radius="5dp">
-
-        <RadioButton
-                android:id="@+id/rd_information_benefits_classic"
-                style="@style/RadioButtonCustomStyle"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+        <info.hoang8f.android.segmented.SegmentedGroup
+                android:id="@+id/sg_options_benefits"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Materias"/>
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/normal_separation"
+                android:layout_marginEnd="@dimen/normal_separation"
+                app:sc_border_width="1dp"
+                app:sc_tint_color="@color/colorPrimary"
+                app:sc_checked_text_color="@android:color/white"
+                app:sc_corner_radius="5dp">
 
-        <RadioButton
-                android:id="@+id/rd_information_benefits_student"
-                style="@style/RadioButtonCustomStyle"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Profesores"/>
+            <RadioButton
+                    android:id="@+id/rd_information_benefits_classic"
+                    style="@style/RadioButtonCustomStyle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Materias"/>
+
+            <RadioButton
+                    android:id="@+id/rd_information_benefits_student"
+                    style="@style/RadioButtonCustomStyle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Profesores"/>
+
+        </info.hoang8f.android.segmented.SegmentedGroup>
 
 
-    </info.hoang8f.android.segmented.SegmentedGroup>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvListSearch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/normal_separation"
+                android:layout_marginStart="@dimen/normal_separation"/>
 
-
-</LinearLayout>
+    </LinearLayout>
+</layout>
