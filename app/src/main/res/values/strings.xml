@@ -16,5 +16,5 @@
     <string name="error_min_length_boleta">El número de boleta consta de 10 digitos</string>
     <string name="error_confirm_password">La confirmación de password no coincide</string>
     <string name="title_news_fragment">Noticias</string>
-    <string name="title_search_fragment">Búsqueda</string>
+    <string name="title_search_fragment">Búsqueda de tutorias</string>
 </resources>
