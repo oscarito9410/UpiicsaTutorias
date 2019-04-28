@@ -66,6 +66,10 @@ dependencies {
     implementation 'com.airbnb.android:lottie:2.5.5'
     implementation 'info.hoang8f:android-segmented:1.0.6'
 
+    implementation project(':interactors')
+    implementation project(':data')
+    implementation project(':domain')
+
 
 
 

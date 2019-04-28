@@ -5,7 +5,7 @@
 
         <variable
                 name="viewModel"
-                type="com.booleansystems.tutorias.ui.login.signin.viewmodel.SignInViewModel"/>
+                type="com.booleansystems.tutorias.view.login.signin.viewmodel.SignInViewModel"/>
     </data>
 
     <RelativeLayout

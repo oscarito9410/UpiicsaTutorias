@@ -5,7 +5,7 @@
 
         <variable
                 name="viewModel"
-                type="com.booleansystems.tutorias.ui.login.signup.SignUpViewModel"/>
+                type="com.booleansystems.tutorias.view.login.signup.SignUpViewModel"/>
     </data>
 
 

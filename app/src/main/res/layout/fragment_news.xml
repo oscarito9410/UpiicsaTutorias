@@ -2,7 +2,7 @@
 <layout>
 
     <data>
-        <variable name="viewModel" type="com.booleansystems.tutorias.ui.home.news.NewsViewModel"/>
+        <variable name="viewModel" type="com.booleansystems.tutorias.view.home.news.NewsViewModel"/>
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

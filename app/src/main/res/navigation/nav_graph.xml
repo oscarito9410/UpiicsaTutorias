@@ -4,12 +4,12 @@
             android:id="@+id/nav_graph" app:startDestination="@id/signInFragment">
 
     <fragment android:id="@+id/signUpFragment"
-              android:name="com.booleansystems.tutorias.ui.login.signup.SignUpFragment"
+              android:name="com.booleansystems.tutorias.view.login.signup.SignUpFragment"
               tools:layout="@layout/fragment_sign_up"
               android:label="SignUpFragment"/>
 
     <fragment android:id="@+id/signInFragment"
-              android:name="com.booleansystems.tutorias.ui.login.signin.SignInFragment"
+              android:name="com.booleansystems.tutorias.view.login.signin.SignInFragment"
               tools:layout="@layout/fragment_sign_in"
               android:label="SignInFragment">
 

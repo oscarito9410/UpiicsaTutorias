@@ -4,7 +4,7 @@
             android:id="@+id/nav_graph" app:startDestination="@id/newsFragment">
 
     <fragment android:id="@+id/newsFragment"
-              android:name="com.booleansystems.tutorias.ui.home.news.NewsFragment"
+              android:name="com.booleansystems.tutorias.view.home.news.NewsFragment"
               tools:layout="@layout/fragment_news"
               android:label="NewsFragment">
         <action android:id="@+id/action_newsFragment_to_searchFragment"
@@ -15,7 +15,7 @@
     </fragment>
 
     <fragment android:id="@+id/searchFragment"
-              android:name="com.booleansystems.tutorias.ui.home.search.SearchFragment"
+              android:name="com.booleansystems.tutorias.view.home.search.SearchFragment"
               tools:layout="@layout/fragment_search">
     </fragment>
 

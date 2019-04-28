@@ -1,8 +1,6 @@
 package com.booleansystems.tutorias.base
 
 import android.app.Application
-import com.booleansystems.tutorias.dependencies.DataRepository
-import com.booleansystems.tutorias.dependencies.PreferenceHelper
 import org.koin.android.ext.android.startKoin
 
 /**
@@ -13,7 +11,11 @@ operez@na-at.com.mx
 class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        val moduleList = listOf(DataRepository)
+        val moduleList =
+            listOf(
+                NetModule,
+                ApplicationModule
+            )
         startKoin(this, moduleList)
     }
 }
