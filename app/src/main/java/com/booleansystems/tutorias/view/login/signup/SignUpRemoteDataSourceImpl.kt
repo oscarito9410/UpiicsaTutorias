@@ -26,7 +26,7 @@ class SignUpRemoteDataSourceImpl(val userEndpoints: UserEndpoints) : SignUpRepos
         }
     }
 
-    override fun saveSignUpData(user: UserEntity) {
+    override fun sendSignUpDataRequest(user: UserEntity) {
         userEndpoints.prueba().enqueue(this)
     }
 }
