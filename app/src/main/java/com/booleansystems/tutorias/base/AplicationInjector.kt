@@ -4,8 +4,8 @@ import com.booleansystems.data.SignUpRepository
 import com.booleansystems.interactors.SignUpUserInteractor
 import com.booleansystems.tutorias.dependencies.preferences.PreferenceHelper
 import com.booleansystems.tutorias.dependencies.rest.UserEndpoints
-import com.booleansystems.tutorias.view.login.signup.SignUpRemoteDataSourceImpl
 import com.booleansystems.tutorias.view.login.signin.viewmodel.SignInViewModel
+import com.booleansystems.tutorias.view.login.signup.SignUpRemoteDataSourceImpl
 import com.booleansystems.tutorias.view.login.signup.SignUpViewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module

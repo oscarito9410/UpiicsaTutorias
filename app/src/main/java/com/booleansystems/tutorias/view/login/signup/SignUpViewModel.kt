@@ -1,8 +1,10 @@
 package com.booleansystems.tutorias.view.login.signup
 
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import android.view.View
+import com.booleansystems.data.common.IBaseResultListener
+import com.booleansystems.domain.SubjectEntity
 import com.booleansystems.domain.UserEntity
 import com.booleansystems.interactors.SignUpUserInteractor
 import com.booleansystems.tutorias.Constants
@@ -13,7 +15,8 @@ import com.booleansystems.tutorias.dependencies.SingleLiveEvent
  * Created by oscar on 18/04/19
  * operez@na-at.com.mx
  */
-open class SignUpViewModel(val signUpUser: SignUpUserInteractor) : ViewModel() {
+open class SignUpViewModel(val signUpUser: SignUpUserInteractor) : ViewModel(), IBaseResultListener<SubjectEntity> {
+
     val boleta = MutableLiveData<String>()
     val name = MutableLiveData<String>()
     val lastName = MutableLiveData<String>()
@@ -56,9 +59,17 @@ open class SignUpViewModel(val signUpUser: SignUpUserInteractor) : ViewModel() {
                 !errorConfirmPassword.value!!
 
         if (isCorrectInfo.value!!) {
-            signUpUser.invoke(UserEntity())
+            signUpUser.invoke(UserEntity(), this)
         }
 
+    }
+
+    override fun onSuccess(response: SubjectEntity) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onError(error: Throwable) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 
