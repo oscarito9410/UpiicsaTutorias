@@ -8,7 +8,7 @@ Created by oscar on 05/05/19
 operez@na-at.com.mx
  */
 data class SignUpRequest(
-    @SerializedName("boleta") val boleta: Int?,
+    @SerializedName("boleta") val boleta: String?,
     @SerializedName("nombre") val nombre: String?,
     @SerializedName("password") val password: String?,
     @SerializedName("ap_paterno") val ap_paterno: String?,

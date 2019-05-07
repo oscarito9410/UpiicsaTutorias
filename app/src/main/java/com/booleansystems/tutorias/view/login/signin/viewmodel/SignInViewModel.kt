@@ -1,19 +1,23 @@
 package com.booleansystems.tutorias.view.login.signin.viewmodel
 
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import android.view.View
+import com.booleansystems.data.common.IBaseResultListener
+import com.booleansystems.domain.common.BaseResponse
+import com.booleansystems.domain.signin.SignInRequest
+import com.booleansystems.interactors.signin.SignInUserInteractor
 import com.booleansystems.tutorias.Constants.Companion.MAX_LENGTH_BOLETA
 import com.booleansystems.tutorias.R
-import com.booleansystems.tutorias.dependencies.preferences.PreferenceHelper
 import com.booleansystems.tutorias.dependencies.SingleLiveEvent
+import retrofit2.HttpException
 
 /**
 
 Created by oscar on 14/04/19
 operez@na-at.com.mx
  */
-class SignInViewModel(val preferenceHelper: PreferenceHelper) : ViewModel() {
+open class SignInViewModel(val signInUserInteractor: SignInUserInteractor) : ViewModel(), IBaseResultListener<BaseResponse> {
 
     val password = MutableLiveData<String>()
 
@@ -25,7 +29,14 @@ class SignInViewModel(val preferenceHelper: PreferenceHelper) : ViewModel() {
 
     val isCorrectInfo = MutableLiveData<Boolean>()
 
-    val toastMessageEvent = SingleLiveEvent<Int>()
+
+    var mIsLoading = SingleLiveEvent<Boolean>()
+
+    val mSuccessSignIn = MutableLiveData<Boolean>()
+
+    val mToastMessageEvent = SingleLiveEvent<Int>()
+
+    val mRestServiceMessage = SingleLiveEvent<String>()
 
     init {
         isCorrectInfo.value = false
@@ -36,11 +47,38 @@ class SignInViewModel(val preferenceHelper: PreferenceHelper) : ViewModel() {
         errorPassword.value = password.value.isNullOrEmpty()
 
         if (errorBoleta.value!!)
-            toastMessageEvent.value = R.string.error_min_length_boleta
+            mToastMessageEvent.value = R.string.error_min_length_boleta
 
-        if (!errorBoleta.value!! && !errorPassword.value!!)
+        if (!errorBoleta.value!! && !errorPassword.value!!) {
 
-            isCorrectInfo.value = true
+            val signInRequest = SignInRequest(
+                boleta.value,
+                password.value
+            )
+
+            mIsLoading.postValue(true)
+            signInUserInteractor.invoke(signInRequest, this)
+
+        }
+    }
+
+    override fun onSuccess(response: BaseResponse) {
+        mRestServiceMessage.postValue(response.message)
+        mSuccessSignIn.postValue(true)
+        mIsLoading.postValue(false)
+    }
+
+    override fun onError(error: Throwable) {
+
+        if (error is HttpException) {
+            when (error.code()) {
+                404 -> {
+                    mToastMessageEvent.postValue(R.string.student_not_found)
+                }
+            }
+        }
+        mIsLoading.postValue(false)
+        mSuccessSignIn.postValue(false)
     }
 
 

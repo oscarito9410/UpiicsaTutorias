@@ -41,8 +41,18 @@ class SignInFragment : BaseFragment(), View.OnClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         mBinding!!.viewModel!!.errorBoleta.observe(this, BaseFieldObserver(ilBoletaSignIn!!))
         mBinding!!.viewModel!!.errorPassword.observe(this, BaseFieldObserver(ilPasswordSignIn!!))
-        mBinding!!.viewModel!!.isCorrectInfo.observe(this, Observer { if (it!!) notifyNavigateHome() })
-        mBinding!!.viewModel!!.toastMessageEvent.observe(this, Observer { t -> showSingleToast(t!!) })
+        mBinding!!.viewModel!!.mToastMessageEvent.observe(this, Observer { t -> showSingleToast(t!!) })
+        mBinding!!.viewModel!!.mToastMessageEvent.observe(this, Observer { t -> showSingleToast(t!!) })
+        mBinding!!.viewModel!!.mRestServiceMessage.observe(this, Observer {
+            showSingleToast(it)
+        })
+        mBinding!!.viewModel!!.mSuccessSignIn.observe(this, Observer {
+            if (it) notifyNavigateHome()
+        })
+        mBinding!!.viewModel!!.mIsLoading.observe(
+            this,
+            Observer { if (it) showProgressDialog(R.string.app_name) else hideProgressDialog() })
+
         super.onActivityCreated(savedInstanceState)
     }
 

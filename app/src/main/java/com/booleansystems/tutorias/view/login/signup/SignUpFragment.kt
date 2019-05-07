@@ -1,11 +1,11 @@
 package com.booleansystems.tutorias.view.login.signup
 
-import androidx.lifecycle.Observer
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.booleansystems.tutorias.R
 import com.booleansystems.tutorias.base.BaseFieldObserver
 import com.booleansystems.tutorias.base.BaseFragment
@@ -46,12 +46,21 @@ class SignUpFragment : BaseFragment() {
             this,
             BaseFieldObserver(ilPasswordConfirmSignUp, R.string.error_confirm_password)
         )
-        mBinding!!.viewModel!!.toastMessageEvent.observe(this, Observer { t -> showSingleToast(t!!) })
-        mBinding!!.viewModel!!.isCorrectInfo.observe(this, Observer { if (it!!) notifyNavigateHome() })
+        mBinding!!.viewModel!!.mToastMessageEvent.observe(this, Observer { t -> showSingleToast(t!!) })
+        mBinding!!.viewModel!!.mRestServiceMessage.observe(this, Observer {
+            showSingleToast(it)
+        })
+        mBinding!!.viewModel!!.mSuccessSignUp.observe(this, Observer {
+            if (it) notifyNavigateHome()
+        })
+        mBinding!!.viewModel!!.mIsLoading.observe(
+            this,
+            Observer { if (it) showProgressDialog(R.string.app_name) else hideProgressDialog() })
         super.onActivityCreated(savedInstanceState)
     }
 
     fun notifyNavigateHome() {
+        activity!!.finish()
         activity!!.startActivity(Intent(context, HomeActivity::class.java))
     }
 }

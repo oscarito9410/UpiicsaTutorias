@@ -2,12 +2,12 @@ package com.booleansystems.tutorias.base
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.booleansystems.tutorias.R
 
@@ -34,6 +34,11 @@ abstract class BaseFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
     }
+
+    fun showSingleToast(message: String) {
+        Toast.makeText(context!!, message, Toast.LENGTH_LONG).show()
+    }
+
 
 
     fun showSingleToast(@StringRes message: Int) {

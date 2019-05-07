@@ -1,7 +1,7 @@
-package com.booleansystems.data
+package com.booleansystems.data.signup
 
 import com.booleansystems.data.common.IBaseResultListener
-import com.booleansystems.domain.SubjectEntity
+import com.booleansystems.domain.common.BaseResponse
 import com.booleansystems.domain.signup.SignUpRequest
 
 /**
@@ -11,12 +11,12 @@ operez@na-at.com.mx
  */
 class SignUpRepository(val signupRemoteDataSource: SignUpRemoteDataSource) {
 
-    fun sendSignUpDataRequest(request: SignUpRequest, result: IBaseResultListener<SubjectEntity>) {
+    fun sendSignUpDataRequest(request: SignUpRequest, result: IBaseResultListener<BaseResponse>) {
         signupRemoteDataSource.sendSignUpDataRequest(request, result)
     }
 
     interface SignUpRemoteDataSource {
-        fun sendSignUpDataRequest(request: SignUpRequest, result: IBaseResultListener<SubjectEntity>)
+        fun sendSignUpDataRequest(request: SignUpRequest, result: IBaseResultListener<BaseResponse>)
     }
 
 

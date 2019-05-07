@@ -17,4 +17,6 @@
     <string name="error_confirm_password">La confirmación de password no coincide</string>
     <string name="title_news_fragment">Noticias</string>
     <string name="title_search_fragment">Búsqueda de tutorias</string>
+    <string name="message_success_sign_up">Te has registrado correctamente!</string>
+    <string name="student_not_found">El estudiante con el número de boleta ingresado no existe</string>
 </resources>

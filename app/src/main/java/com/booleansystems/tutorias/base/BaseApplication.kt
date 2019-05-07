@@ -1,6 +1,8 @@
 package com.booleansystems.tutorias.base
 
 import android.app.Application
+import com.booleansystems.tutorias.di.ApplicationModule
+import com.booleansystems.tutorias.di.NetModule
 import org.koin.android.ext.android.startKoin
 
 /**
