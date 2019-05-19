@@ -13,4 +13,6 @@ operez@na-at.com.mx
 class SignInUserInteractor(val signInRepository: SignInRepository) {
     operator fun invoke(request: SignInRequest, result: IBaseResultListener<BaseResponse>) =
         signInRepository.sendSignUpDataRequest(request, result)
+
+    operator fun invoke() = signInRepository.validateAlreadySignIn()
 }

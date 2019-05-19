@@ -17,7 +17,8 @@ import retrofit2.HttpException
 Created by oscar on 14/04/19
 operez@na-at.com.mx
  */
-open class SignInViewModel(val signInUserInteractor: SignInUserInteractor) : ViewModel(), IBaseResultListener<BaseResponse> {
+open class SignInViewModel(val signInUserInteractor: SignInUserInteractor) : ViewModel(),
+    IBaseResultListener<BaseResponse> {
 
     val password = MutableLiveData<String>()
 
@@ -40,6 +41,11 @@ open class SignInViewModel(val signInUserInteractor: SignInUserInteractor) : Vie
 
     init {
         isCorrectInfo.value = false
+    }
+
+    open fun onLoad() {
+        if (signInUserInteractor.invoke())
+            mSuccessSignIn.postValue(true)
     }
 
     open fun onSignUp(v: View) {

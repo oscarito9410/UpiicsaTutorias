@@ -24,8 +24,6 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
             navHostFragment.navController.navigate(R.id.action_newsFragment_to_searchFragment)
         }
 
-
     }
-
 
 }

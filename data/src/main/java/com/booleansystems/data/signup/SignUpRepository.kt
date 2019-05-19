@@ -1,6 +1,7 @@
 package com.booleansystems.data.signup
 
 import com.booleansystems.data.common.IBaseResultListener
+import com.booleansystems.data.common.SessionDataSource
 import com.booleansystems.domain.common.BaseResponse
 import com.booleansystems.domain.signup.SignUpRequest
 
@@ -15,9 +16,7 @@ class SignUpRepository(val signupRemoteDataSource: SignUpRemoteDataSource) {
         signupRemoteDataSource.sendSignUpDataRequest(request, result)
     }
 
-    interface SignUpRemoteDataSource {
+    interface SignUpRemoteDataSource : SessionDataSource {
         fun sendSignUpDataRequest(request: SignUpRequest, result: IBaseResultListener<BaseResponse>)
     }
-
-
 }

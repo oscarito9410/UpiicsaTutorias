@@ -5,6 +5,7 @@ import com.booleansystems.data.signup.SignUpRepository
 import com.booleansystems.interactors.signin.SignInUserInteractor
 import com.booleansystems.interactors.signup.SignUpUserInteractor
 import com.booleansystems.tutorias.Constants
+import com.booleansystems.tutorias.dependencies.preferences.PreferenceHelper
 import com.booleansystems.tutorias.dependencies.rest.UserEndpoints
 import com.booleansystems.tutorias.view.login.signin.SignInRemoteDataSourceImpl
 import com.booleansystems.tutorias.view.login.signin.viewmodel.SignInViewModel
@@ -24,9 +25,14 @@ Created by oscar on 18/04/19
 operez@na-at.com.mx
  */
 val ApplicationModule = module(definition = {
+
+    single {
+        PreferenceHelper(get())
+    }
+
     factory {
         val userEndpoints: UserEndpoints = get()
-        return@factory SignInRemoteDataSourceImpl(userEndpoints)
+        return@factory SignInRemoteDataSourceImpl(userEndpoints,get())
     }
 
     factory {
@@ -43,7 +49,7 @@ val ApplicationModule = module(definition = {
 
     factory {
         val userEndpoints: UserEndpoints = get()
-        return@factory SignUpRemoteDataSourceImpl(userEndpoints)
+        return@factory SignUpRemoteDataSourceImpl(userEndpoints,get())
     }
 
     factory {

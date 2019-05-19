@@ -39,6 +39,7 @@ class SignInFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        mBinding!!.viewModel!!.onLoad()
         mBinding!!.viewModel!!.errorBoleta.observe(this, BaseFieldObserver(ilBoletaSignIn!!))
         mBinding!!.viewModel!!.errorPassword.observe(this, BaseFieldObserver(ilPasswordSignIn!!))
         mBinding!!.viewModel!!.mToastMessageEvent.observe(this, Observer { t -> showSingleToast(t!!) })
