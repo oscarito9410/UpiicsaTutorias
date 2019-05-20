@@ -1,9 +1,9 @@
-package com.booleansystems.tutorias
+package com.booleansystems.tutorias.utils
 
 import android.content.Context
 import androidx.annotation.StringRes
+import com.booleansystems.tutorias.R
 import com.google.android.material.textfield.TextInputLayout
-import java.util.Collections.replaceAll
 import java.util.regex.Pattern
 
 

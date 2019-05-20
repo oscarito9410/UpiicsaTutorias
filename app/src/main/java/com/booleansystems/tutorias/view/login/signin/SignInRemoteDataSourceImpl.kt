@@ -4,9 +4,9 @@ import com.booleansystems.data.common.IBaseResultListener
 import com.booleansystems.data.signin.SignInRepository
 import com.booleansystems.domain.common.BaseResponse
 import com.booleansystems.domain.signin.SignInRequest
-import com.booleansystems.tutorias.Constants
 import com.booleansystems.tutorias.dependencies.preferences.PreferenceHelper
 import com.booleansystems.tutorias.dependencies.rest.UserEndpoints
+import com.booleansystems.tutorias.utils.Constants
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers

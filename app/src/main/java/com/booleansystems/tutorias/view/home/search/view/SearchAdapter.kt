@@ -1,13 +1,14 @@
 package com.booleansystems.tutorias.view.home.search.view
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.booleansystems.domain.SubjectEntity
+import com.booleansystems.tutorias.utils.IListenerClickItem
 import io.reactivex.Observable
+import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
 import io.reactivex.functions.Predicate
 import kotlinx.android.synthetic.main.item_search_result.view.*
@@ -18,8 +19,8 @@ import kotlinx.android.synthetic.main.item_search_result.view.*
 Created by oscar on 20/04/19
 operez@na-at.com.mx
  */
-@SuppressLint("CheckResult")
-class SearchAdapter(context: Context, list: List<SubjectEntity>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(iListenerClickItem: IListenerClickItem, context: Context, list: List<SubjectEntity>) :
+    RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     var mList: MutableList<SubjectEntity>? = null
 
@@ -30,6 +31,10 @@ class SearchAdapter(context: Context, list: List<SubjectEntity>) : RecyclerView.
     var mContext: Context? = null
 
     var mLayoutInflater: LayoutInflater? = null
+
+    var mDisaposable: Disposable? = null
+
+    private var iListenerClickItem = iListenerClickItem;
 
     init {
         mContext = context
@@ -42,17 +47,20 @@ class SearchAdapter(context: Context, list: List<SubjectEntity>) : RecyclerView.
 
     fun filter(query: String) {
         querySearch = query.toLowerCase()
-        if (query.isNullOrEmpty()) {
+        if (query.isEmpty()) {
             mList!!.clear()
             mList!!.addAll(mOriginalList!!)
             notifyDataSetChanged()
         } else {
-            Observable.fromIterable(mList).filter(Predicate {
+            mDisaposable = Observable.fromIterable(mList).filter(Predicate {
                 return@Predicate it.nombre.toLowerCase().startsWith(query.toLowerCase()) || it.nombre
                     .toLowerCase().contains(query.toLowerCase())
             }).toList().subscribe(Consumer {
                 mList!!.clear()
                 mList!!.addAll(it)
+                if (mDisaposable != null)
+                    mDisaposable!!.dispose()
+
                 notifyDataSetChanged()
             })
         }
@@ -75,6 +83,9 @@ class SearchAdapter(context: Context, list: List<SubjectEntity>) : RecyclerView.
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setData(mList!![position], querySearch)
+        holder.itemView.setOnClickListener {
+            iListenerClickItem.onItemClicked(holder.itemView, mList!!.get(position))
+        }
     }
 
 

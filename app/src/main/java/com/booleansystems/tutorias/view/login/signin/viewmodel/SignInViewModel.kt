@@ -7,9 +7,9 @@ import com.booleansystems.data.common.IBaseResultListener
 import com.booleansystems.domain.common.BaseResponse
 import com.booleansystems.domain.signin.SignInRequest
 import com.booleansystems.interactors.signin.SignInUserInteractor
-import com.booleansystems.tutorias.Constants.Companion.MAX_LENGTH_BOLETA
 import com.booleansystems.tutorias.R
 import com.booleansystems.tutorias.dependencies.SingleLiveEvent
+import com.booleansystems.tutorias.utils.Constants.Companion.MAX_LENGTH_BOLETA
 import retrofit2.HttpException
 
 /**

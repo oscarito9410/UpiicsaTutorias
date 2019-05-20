@@ -7,9 +7,9 @@ import com.booleansystems.data.common.IBaseResultListener
 import com.booleansystems.domain.common.BaseResponse
 import com.booleansystems.domain.signup.SignUpRequest
 import com.booleansystems.interactors.signup.SignUpUserInteractor
-import com.booleansystems.tutorias.Constants
 import com.booleansystems.tutorias.R
 import com.booleansystems.tutorias.dependencies.SingleLiveEvent
+import com.booleansystems.tutorias.utils.Constants
 import com.google.gson.Gson
 import retrofit2.HttpException
 

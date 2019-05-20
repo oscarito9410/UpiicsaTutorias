@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.booleansystems.tutorias.R
-import com.booleansystems.tutorias.Utils
+import com.booleansystems.tutorias.utils.Utils
 import com.prof.rssparser.Article
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_home_new.view.*

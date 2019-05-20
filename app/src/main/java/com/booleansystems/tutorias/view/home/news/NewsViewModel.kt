@@ -2,7 +2,7 @@ package com.booleansystems.tutorias.view.home.news
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.booleansystems.tutorias.Constants
+import com.booleansystems.tutorias.utils.Constants
 import com.prof.rssparser.Article
 import com.prof.rssparser.Parser
 

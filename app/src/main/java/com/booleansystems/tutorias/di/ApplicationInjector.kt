@@ -4,9 +4,9 @@ import com.booleansystems.data.signin.SignInRepository
 import com.booleansystems.data.signup.SignUpRepository
 import com.booleansystems.interactors.signin.SignInUserInteractor
 import com.booleansystems.interactors.signup.SignUpUserInteractor
-import com.booleansystems.tutorias.Constants
 import com.booleansystems.tutorias.dependencies.preferences.PreferenceHelper
 import com.booleansystems.tutorias.dependencies.rest.UserEndpoints
+import com.booleansystems.tutorias.utils.Constants
 import com.booleansystems.tutorias.view.login.signin.SignInRemoteDataSourceImpl
 import com.booleansystems.tutorias.view.login.signin.viewmodel.SignInViewModel
 import com.booleansystems.tutorias.view.login.signup.SignUpRemoteDataSourceImpl

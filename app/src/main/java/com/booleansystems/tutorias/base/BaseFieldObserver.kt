@@ -1,9 +1,9 @@
 package com.booleansystems.tutorias.base
 
 import androidx.lifecycle.Observer
-import com.google.android.material.textfield.TextInputLayout
 import com.booleansystems.tutorias.R
-import com.booleansystems.tutorias.Utils
+import com.booleansystems.tutorias.utils.Utils
+import com.google.android.material.textfield.TextInputLayout
 
 /**
  * Created by oscar on 18/04/19
