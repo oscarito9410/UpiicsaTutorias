@@ -14,10 +14,12 @@ class Constants {
         const val USER_LOGGED_IN = "user_logged_in"
     }
 
+
+
     class APIConfig {
         companion object {
             const val BASE_URL = "http://sosmex9410-001-site2.etempurl.com/api/upiicsa/";
-            const val URL_FEED = "http://fetchrss.com/rss/5cb95ceb8a93f8d6088b45685cb95ca58a93f87e038b4567.xml";
+            const val URL_FEED = "http://fetchrss.com/rss/5d1921e48a93f8093a8b45685d1922a18a93f8f1408b4567.xml"
         }
     }
 }

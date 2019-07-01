@@ -45,9 +45,16 @@ class NewsAdapter(val context: Context, val listArticles: List<Article>) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun setData(article: Article) {
-            val finalImage = article.image.replace("&amp;", "&")
-            val finalDescription = article.description.replace("(Feed generated with <a href=\"http://fetchrss.com\" target=\"_blank\">FetchRSS</a>)", "")
-            Picasso.get().load(finalImage).into(itemView.imgNew)
+            val finalDescription = article.description!!.replace(
+                "(Feed generated with <a href=\"http://fetchrss.com\" target=\"_blank\">FetchRSS</a>)",
+                ""
+            )
+            if (!article.image.isNullOrEmpty()) {
+                val finalImage = article.image!!.replace("&amp;", "&")
+                Picasso.get().load(finalImage).into(itemView.imgNew)
+            } else {
+                itemView.imgNew.visibility = View.GONE
+            }
             itemView.tvNewTitle.text = article.title
             itemView.tvNewDescription.text = Utils.removeTags(finalDescription)!!.trimEnd()
         }

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.booleansystems.data.common.IBaseResultListener
 import com.booleansystems.domain.common.BaseResponse
+import com.booleansystems.domain.common.EnrollResponse
 import com.booleansystems.domain.signin.SignInRequest
 import com.booleansystems.interactors.signin.SignInUserInteractor
 import com.booleansystems.tutorias.R
@@ -18,7 +19,7 @@ Created by oscar on 14/04/19
 operez@na-at.com.mx
  */
 open class SignInViewModel(val signInUserInteractor: SignInUserInteractor) : ViewModel(),
-    IBaseResultListener<BaseResponse> {
+    IBaseResultListener<EnrollResponse> {
 
     val password = MutableLiveData<String>()
 
@@ -68,7 +69,7 @@ open class SignInViewModel(val signInUserInteractor: SignInUserInteractor) : Vie
         }
     }
 
-    override fun onSuccess(response: BaseResponse) {
+    override fun onSuccess(response: EnrollResponse) {
         mRestServiceMessage.postValue(response.message)
         mSuccessSignIn.postValue(true)
         mIsLoading.postValue(false)

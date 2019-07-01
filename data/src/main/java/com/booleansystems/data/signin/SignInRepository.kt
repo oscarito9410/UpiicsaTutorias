@@ -1,8 +1,8 @@
 package com.booleansystems.data.signin
 
 import com.booleansystems.data.common.IBaseResultListener
-import com.booleansystems.data.common.SessionDataSource
-import com.booleansystems.domain.common.BaseResponse
+import com.booleansystems.data.common.ISessionDataSource
+import com.booleansystems.domain.common.EnrollResponse
 import com.booleansystems.domain.signin.SignInRequest
 
 /**
@@ -10,9 +10,9 @@ import com.booleansystems.domain.signin.SignInRequest
 Created by oscar on 30/04/19
 operez@na-at.com.mx
  */
-class SignInRepository(val signUpRemoteDataSource: SignUpRemoteDataSource) {
+class SignInRepository(private val signUpRemoteDataSource: SignUpRemoteDataSource) {
 
-    fun sendSignUpDataRequest(request: SignInRequest, result: IBaseResultListener<BaseResponse>) {
+    fun sendSignUpDataRequest(request: SignInRequest, result: IBaseResultListener<EnrollResponse>) {
         signUpRemoteDataSource.sendSignUpDataRequest(request, result)
     }
 
@@ -20,8 +20,8 @@ class SignInRepository(val signUpRemoteDataSource: SignUpRemoteDataSource) {
        return  signUpRemoteDataSource.validateAlreadySignIn()
     }
 
-    interface SignUpRemoteDataSource : SessionDataSource {
-        fun sendSignUpDataRequest(request: SignInRequest, result: IBaseResultListener<BaseResponse>)
+    interface SignUpRemoteDataSource : ISessionDataSource {
+        fun sendSignUpDataRequest(request: SignInRequest, result: IBaseResultListener<EnrollResponse>)
 
         fun validateAlreadySignIn(): Boolean
     }

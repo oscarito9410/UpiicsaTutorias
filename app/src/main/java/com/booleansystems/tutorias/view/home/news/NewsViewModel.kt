@@ -4,19 +4,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.booleansystems.tutorias.utils.Constants
 import com.prof.rssparser.Article
+import com.prof.rssparser.OnTaskCompleted
 import com.prof.rssparser.Parser
 
 /**
  * Created by oscar on 19/04/19
  * operez@na-at.com.mx
  */
-class NewsViewModel : ViewModel() {
+class NewsViewModel : ViewModel(), OnTaskCompleted {
+
 
     lateinit var listArticles: MutableLiveData<MutableList<Article>>
 
     val isLoading = MutableLiveData<Boolean>()
 
-    var originaListArticles = arrayListOf<Article>()
+    var originaListArticles = arrayListOf<Article>().toMutableList()
 
     init {
         isLoading.value = false
@@ -25,20 +27,8 @@ class NewsViewModel : ViewModel() {
 
     fun loadNews() {
         if (originaListArticles.isNullOrEmpty()) {
-            isLoading.value = true
             val parser = Parser()
-            parser.onFinish(object : Parser.OnTaskCompleted {
-                override fun onTaskCompleted(list: ArrayList<Article>) {
-                    originaListArticles = list
-                    setArticleList(list)
-                    isLoading.value = false
-                }
-
-                override fun onError() {
-                    isLoading.value = false
-                }
-
-            })
+            parser.onFinish(this)
             parser.execute(Constants.APIConfig.URL_FEED)
         } else {
             setArticleList(originaListArticles)
@@ -46,6 +36,15 @@ class NewsViewModel : ViewModel() {
 
     }
 
+    override fun onError(e: Exception) {
+        isLoading.value = false
+    }
+
+    override fun onTaskCompleted(list: MutableList<Article>) {
+        originaListArticles = list
+        setArticleList(list)
+        isLoading.value = false
+    }
 
     fun getArticleList(): MutableLiveData<MutableList<Article>> {
         if (!::listArticles.isInitialized) {

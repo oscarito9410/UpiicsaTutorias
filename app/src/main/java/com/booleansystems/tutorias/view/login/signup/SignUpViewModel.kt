@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.booleansystems.data.common.IBaseResultListener
 import com.booleansystems.domain.common.BaseResponse
+import com.booleansystems.domain.common.EnrollResponse
 import com.booleansystems.domain.signup.SignUpRequest
 import com.booleansystems.interactors.signup.SignUpUserInteractor
 import com.booleansystems.tutorias.R
@@ -17,7 +18,7 @@ import retrofit2.HttpException
  * Created by oscar on 18/04/19
  * operez@na-at.com.mx
  */
-open class SignUpViewModel(val signUpUser: SignUpUserInteractor) : ViewModel(), IBaseResultListener<BaseResponse> {
+open class SignUpViewModel(val signUpUser: SignUpUserInteractor) : ViewModel(), IBaseResultListener<EnrollResponse> {
 
     val boleta = MutableLiveData<String>()
     val name = MutableLiveData<String>()
@@ -78,7 +79,7 @@ open class SignUpViewModel(val signUpUser: SignUpUserInteractor) : ViewModel(), 
     }
 
 
-    override fun onSuccess(response: BaseResponse) {
+    override fun onSuccess(response: EnrollResponse) {
         mRestServiceMessage.postValue(response.message)
         mSuccessSignUp.postValue(true)
         mIsLoading.postValue(false)

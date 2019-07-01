@@ -40,7 +40,6 @@ abstract class BaseFragment : Fragment() {
     }
 
 
-
     fun showSingleToast(@StringRes message: Int) {
         Toast.makeText(context!!, message, Toast.LENGTH_LONG).show()
     }
@@ -57,9 +56,12 @@ abstract class BaseFragment : Fragment() {
     }
 
     fun hideProgressDialog() {
-        if (mProgressDialog!!.isShowing()) {
-            mProgressDialog!!.dismiss()
+        mProgressDialog?.let {
+            if (it.isShowing) {
+                it.dismiss()
+            }
         }
+
     }
 
     fun goActivity(clazz: Class<out AppCompatActivity>) {
