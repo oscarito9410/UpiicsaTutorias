@@ -13,7 +13,6 @@ class ProfileViewModel(userEntity: UserEntity) : ViewModel() {
 
     init {
         user.postValue(userEntity)
-
     }
 
 
