@@ -16,7 +16,7 @@ class SignUpRepository(val signupRemoteDataSource: SignUpRemoteDataSource) {
         signupRemoteDataSource.sendSignUpDataRequest(request, result)
     }
 
-    interface SignUpRemoteDataSource : ISessionDataSource {
+    interface SignUpRemoteDataSource   {
         fun sendSignUpDataRequest(request: SignUpRequest, result: IBaseResultListener<EnrollResponse>)
     }
 }

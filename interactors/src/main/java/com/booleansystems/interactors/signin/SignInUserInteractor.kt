@@ -15,5 +15,5 @@ class SignInUserInteractor(val signInRepository: SignInRepository) {
     operator fun invoke(request: SignInRequest, result: IBaseResultListener<EnrollResponse>) =
         signInRepository.sendSignUpDataRequest(request, result)
 
-    operator fun invoke() = signInRepository.validateAlreadySignIn()
+    operator fun invoke() = false
 }

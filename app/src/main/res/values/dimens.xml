@@ -6,6 +6,7 @@
     <!-- Redesign -->
     <dimen name="margin_top_fields_auth">80dp</dimen>
     <dimen name="normal_separation">10dp</dimen>
+    <dimen name="normal_separation_8">8dp</dimen>
     <dimen name="small_separation">5dp</dimen>
     <dimen name="small_separation_3">3dp</dimen>
     <dimen name="hint_top_separation">2dp</dimen>
@@ -43,6 +44,30 @@
     <dimen name="height_text_input_layout">36dp</dimen>
 
     <dimen name="button_width_tablet">380dp</dimen>
+
+
+    <dimen name="app_bar_height">320dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="width_default_gallery">200dp</dimen>
+    <dimen name="height_default_gallery">200dp</dimen>
+
+
+    <dimen name="width_lottie_detail">200dp</dimen>
+    <dimen name="height_lottie_detail">200dp</dimen>
+    <dimen name="width_lottie_search">60dp</dimen>
+    <dimen name="height_lottie_search">60dp</dimen>
+    <dimen name="width_lottie_item">80dp</dimen>
+    <dimen name="height_lottie_item">80dp</dimen>
+    <dimen name="width_lottie_loading">120dp</dimen>
+    <dimen name="height_lottie_loading">120dp</dimen>
+    <dimen name="text_size_title">16sp</dimen>
+    <dimen name="default_corner_radius">4dp</dimen>
+    <dimen name="default_card_elevation">5dp</dimen>
+    <dimen name="default_width_profile_iv">64dp</dimen>
+    <dimen name="default_heght_profile_iv">64dp</dimen>
+    <dimen name="small_separation_2">2dp</dimen>
+    <dimen name="default_width_company_iv">60dp</dimen>
+    <dimen name="default_heght_company_iv">60dp</dimen>
 
 
 </resources>

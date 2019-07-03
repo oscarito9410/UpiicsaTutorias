@@ -2,6 +2,7 @@ package com.booleansystems.tutorias.view.login.signin
 
 import com.booleansystems.data.common.IBaseResultListener
 import com.booleansystems.data.signin.SignInRepository
+import com.booleansystems.data.user.UserDataRepository
 import com.booleansystems.domain.common.BaseResponse
 import com.booleansystems.domain.common.EnrollResponse
 import com.booleansystems.domain.signin.SignInRequest
@@ -17,13 +18,10 @@ import io.reactivex.schedulers.Schedulers
 Created by oscar on 06/05/19
 operez@na-at.com.mx
  */
-class SignInRemoteDataSourceImpl(
+class SignInRepositoryImpl(
     val userEndpoints: UserEndpoints,
-    val preferencesHelper: PreferenceHelper
+    val userDataRepository: UserDataRepository
 ) : SignInRepository.SignUpRemoteDataSource {
-    override fun validateAlreadySignIn(): Boolean {
-        return preferencesHelper.defaultPrefs().getBoolean(Constants.USER_LOGGED_IN, false)
-    }
 
     var mDisaposable: Disposable? = null
 
@@ -32,7 +30,7 @@ class SignInRemoteDataSourceImpl(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io()).subscribe({
                 result.onSuccess(it)
-                saveSessionData(it, true)
+                userDataRepository.saveSesionData(it, true)
                 mDisaposable!!.dispose()
             }, {
                 result.onError(it)
@@ -40,11 +38,5 @@ class SignInRemoteDataSourceImpl(
             })
     }
 
-    override fun saveSessionData(response: EnrollResponse, isLogged: Boolean) {
-        preferencesHelper.defaultPrefs().edit()
-            .putString(Constants.USER_BOLETA, response.boleta)
-            .putString(Constants.USER_NAME, "${response.nombre}${response.apPaterno}${response.apMaterno}")
-            .putBoolean(Constants.USER_LOGGED_IN, true).apply()
-    }
 
 }

@@ -2,6 +2,7 @@ package com.booleansystems.tutorias.view.login.signup
 
 import com.booleansystems.data.common.IBaseResultListener
 import com.booleansystems.data.signup.SignUpRepository
+import com.booleansystems.data.user.UserDataRepository
 import com.booleansystems.domain.common.BaseResponse
 import com.booleansystems.domain.common.EnrollResponse
 import com.booleansystems.domain.signup.SignUpRequest
@@ -18,9 +19,9 @@ import io.reactivex.schedulers.Schedulers
 Created by oscar on 27/04/19
 operez@na-at.com.mx
  */
-class SignUpRemoteDataSourceImpl(
+class SignUpRepositoryImpl(
     val userEndpoints: UserEndpoints,
-    val preferencesHelper: PreferenceHelper
+    val userDataRepository: UserDataRepository
 ) : SignUpRepository.SignUpRemoteDataSource {
 
 
@@ -29,7 +30,7 @@ class SignUpRemoteDataSourceImpl(
     override fun sendSignUpDataRequest(request: SignUpRequest, result: IBaseResultListener<EnrollResponse>) {
         mDisaposable = userEndpoints.signUp(request).observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io()).subscribe({
-                saveSessionData(it, true)
+                userDataRepository.saveSesionData(it, true)
                 result.onSuccess(it)
                 mDisaposable!!.dispose()
 
@@ -39,10 +40,5 @@ class SignUpRemoteDataSourceImpl(
             })
     }
 
-    override fun saveSessionData(response: EnrollResponse, isLogged: Boolean) {
-        preferencesHelper.defaultPrefs().edit()
-            .putString(Constants.USER_BOLETA, response.boleta)
-            .putString(Constants.USER_NAME, "${response.nombre}${response.apPaterno}${response.apMaterno}")
-            .putBoolean(Constants.USER_LOGGED_IN, true).apply()
-    }
+
 }

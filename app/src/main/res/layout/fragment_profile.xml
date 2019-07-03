@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    <data>
+        <variable name="viewModel" type="com.booleansystems.tutorias.view.home.profile.ProfileViewModel"/>
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_container_info"
+                android:layout_width="match_parent"
+                android:visibility="visible"
+                android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                    android:id="@+id/profile_cardview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_cardview_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:background="@drawable/minimalist_background">
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/iv_profile_image"
+                            android:layout_width="@dimen/default_width_profile_iv"
+                            android:layout_height="@dimen/default_heght_profile_iv"
+                            android:layout_marginStart="@dimen/normal_separation_8"
+                            android:layout_marginTop="@dimen/big_separation"
+                            android:layout_marginEnd="@dimen/normal_separation_8"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#0F806A"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:src="@drawable/avatar_boy"/>
+
+                    <TextView
+                            android:id="@+id/tv_profile_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/normal_separation_8"
+                            android:layout_marginTop="@dimen/normal_separation_8"
+                            android:textColor="@android:color/white"
+                            android:text="@={viewModel.user}"
+                            android:layout_marginEnd="@dimen/normal_separation_8"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/iv_profile_image"
+                            tools:text="Oscar Perez Martinez"/>
+
+                    <TextView
+                            android:id="@+id/tv_profile_boleta"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/normal_separation_8"
+                            android:layout_marginTop="@dimen/small_separation_2"
+                            android:layout_marginEnd="@dimen/normal_separation_8"
+                            android:textAlignment="center"
+                            android:textSize="18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:textColor="@android:color/white"
+                            android:text="@={user.boleta}"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_profile_name"
+                            tools:text="2013600801"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_social_links_container"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/normal_separation_8"
+                            android:layout_marginTop="@dimen/big_separation"
+                            android:layout_marginEnd="@dimen/normal_separation_8"
+                            android:layout_marginBottom="@dimen/normal_separation_8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintHeight_percent=".7"
+                            app:layout_constraintWidth_percent=".7"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_profile_boleta">
+
+                        <TextView
+                                android:id="@+id/tv_website_container"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/normal_separation_8"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="@+id/tv_twitter_container"
+                                app:layout_constraintEnd_toStartOf="@+id/tv_twitter_container"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintHorizontal_chainStyle="packed"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:onClick="onWebSiteClick"
+                                android:textColor="@android:color/black"
+                                app:layout_constraintTop_toTopOf="@+id/tv_twitter_container"/>
+
+
+                        <TextView
+                                android:id="@+id/tv_twitter_container"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/normal_separation_8"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:onClick="onLinkedinClick"
+                                app:layout_constraintBottom_toBottomOf="@+id/tv_github_container"
+                                app:layout_constraintEnd_toStartOf="@+id/tv_github_container"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/tv_website_container"
+                                app:layout_constraintTop_toTopOf="@+id/tv_github_container"
+                                android:textColor="@android:color/black"/>
+
+
+                        <TextView
+                                android:id="@+id/tv_github_container"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/normal_separation_8"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:onClick="onGitHubClick"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/tv_twitter_container"
+                                android:textColor="@android:color/black"
+                        />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                    android:id="@+id/tv_title_skills"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewTitleStyle"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profile_cardview"/>
+
+            <androidx.cardview.widget.CardView
+                    android:id="@+id/profile_skills_card_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/CardViewDefaultStyle"
+                    android:layout_marginTop="@dimen/normal_separation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title_skills">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:id="@+id/tv_profile_main_skill"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            tools:text="Android Developer Sr"
+                            android:layout_marginStart="@dimen/small_separation_3"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_skills"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/small_separation"
+                            android:nestedScrollingEnabled="false"
+                    />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                    android:id="@+id/tv_title_work_experience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextViewTitleStyle"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profile_skills_card_view"/>
+
+
+            <androidx.cardview.widget.CardView
+                    android:id="@+id/profile_work_experience_card_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/CardViewDefaultStyle"
+                    android:layout_marginTop="@dimen/normal_separation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title_work_experience">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_work_experience"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/small_separation"
+                            android:nestedScrollingEnabled="false"
+                    />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</layout>

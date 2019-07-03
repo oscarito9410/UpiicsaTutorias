@@ -2,14 +2,17 @@ package com.booleansystems.tutorias.di
 
 import com.booleansystems.data.signin.SignInRepository
 import com.booleansystems.data.signup.SignUpRepository
+import com.booleansystems.data.user.UserDataRepository
 import com.booleansystems.interactors.signin.SignInUserInteractor
 import com.booleansystems.interactors.signup.SignUpUserInteractor
 import com.booleansystems.tutorias.dependencies.preferences.PreferenceHelper
 import com.booleansystems.tutorias.dependencies.rest.UserEndpoints
 import com.booleansystems.tutorias.utils.Constants
-import com.booleansystems.tutorias.view.login.signin.SignInRemoteDataSourceImpl
+import com.booleansystems.tutorias.view.home.profile.ProfileViewModel
+import com.booleansystems.tutorias.view.login.UserDataRepositoryImpl
+import com.booleansystems.tutorias.view.login.signin.SignInRepositoryImpl
 import com.booleansystems.tutorias.view.login.signin.viewmodel.SignInViewModel
-import com.booleansystems.tutorias.view.login.signup.SignUpRemoteDataSourceImpl
+import com.booleansystems.tutorias.view.login.signup.SignUpRepositoryImpl
 import com.booleansystems.tutorias.view.login.signup.SignUpViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -31,36 +34,58 @@ val ApplicationModule = module(definition = {
     }
 
     factory {
+        return@factory UserDataRepositoryImpl(get())
+    }
+
+
+    factory {
+        val repository: UserDataRepositoryImpl = get()
+        return@factory UserDataRepository(repository)
+    }
+
+    factory {
+        val repository: SignInRepositoryImpl = get()
+        return@factory SignInRepository(repository)
+    }
+
+    factory {
         val userEndpoints: UserEndpoints = get()
-        return@factory SignInRemoteDataSourceImpl(userEndpoints,get())
+        val repository: UserDataRepository = get()
+        return@factory SignInRepositoryImpl(userEndpoints, repository)
     }
 
-    factory {
-        val remoteDataSource: SignInRemoteDataSourceImpl = get()
-        return@factory SignInRepository(remoteDataSource)
-    }
+
 
     factory {
-        val signInInteractor = SignInUserInteractor(get())
-        return@factory signInInteractor
+        return@factory SignInUserInteractor(get())
     }
 
     viewModel { SignInViewModel(get()) }
 
     factory {
         val userEndpoints: UserEndpoints = get()
-        return@factory SignUpRemoteDataSourceImpl(userEndpoints,get())
+        val repository: UserDataRepository = get()
+        return@factory SignUpRepositoryImpl(userEndpoints, repository)
     }
 
     factory {
-        val remoteDataSource: SignUpRemoteDataSourceImpl = get()
+        val remoteDataSource: SignUpRepositoryImpl = get()
         return@factory SignUpRepository(remoteDataSource)
     }
     factory {
-        val signUpNewUserInteractor = SignUpUserInteractor(get())
-        return@factory signUpNewUserInteractor
+        return@factory SignUpUserInteractor(get())
     }
     viewModel { SignUpViewModel(get()) }
+
+
+    factory {
+        val repository: UserDataRepositoryImpl = get()
+        return@factory repository.getUserModel()
+    }
+
+    viewModel {
+        ProfileViewModel(get())
+    }
 
 
 })

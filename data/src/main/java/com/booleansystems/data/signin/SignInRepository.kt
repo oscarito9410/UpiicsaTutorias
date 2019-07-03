@@ -16,14 +16,9 @@ class SignInRepository(private val signUpRemoteDataSource: SignUpRemoteDataSourc
         signUpRemoteDataSource.sendSignUpDataRequest(request, result)
     }
 
-    fun validateAlreadySignIn(): Boolean {
-       return  signUpRemoteDataSource.validateAlreadySignIn()
-    }
 
-    interface SignUpRemoteDataSource : ISessionDataSource {
+    interface SignUpRemoteDataSource {
         fun sendSignUpDataRequest(request: SignInRequest, result: IBaseResultListener<EnrollResponse>)
-
-        fun validateAlreadySignIn(): Boolean
     }
 
 }

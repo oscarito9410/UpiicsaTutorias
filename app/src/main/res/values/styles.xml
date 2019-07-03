@@ -55,4 +55,17 @@
         <item name="android:paddingRight">5dp</item>
     </style>
 
+    <style name="TextViewTitleStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginTop">@dimen/big_separation</item>
+        <item name="android:layout_marginBottom">@dimen/big_separation</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="CardViewDefaultStyle">
+        <item name="cardBackgroundColor">@android:color/white</item>
+        <item name="cardCornerRadius">0dp</item>
+        <item name="cardElevation">20dp</item>
+        <item name="contentPadding">@dimen/small_separation_3</item>
+    </style>
 </resources>
