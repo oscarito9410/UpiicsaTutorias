@@ -16,9 +16,12 @@ class SignInRepository(private val signUpRemoteDataSource: SignUpRemoteDataSourc
         signUpRemoteDataSource.sendSignUpDataRequest(request, result)
     }
 
+    fun isLogged() = signUpRemoteDataSource.isLogged()
+
 
     interface SignUpRemoteDataSource {
         fun sendSignUpDataRequest(request: SignInRequest, result: IBaseResultListener<EnrollResponse>)
+        fun isLogged(): Boolean
     }
 
 }

@@ -22,6 +22,7 @@ class SignInRepositoryImpl(
     val userEndpoints: UserEndpoints,
     val userDataRepository: UserDataRepository
 ) : SignInRepository.SignUpRemoteDataSource {
+    override fun isLogged(): Boolean = userDataRepository.alreadyLogged()
 
     var mDisaposable: Disposable? = null
 

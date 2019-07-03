@@ -11,9 +11,11 @@ import com.booleansystems.domain.signin.SignInRequest
 Created by oscar on 30/04/19
 operez@na-at.com.mx
  */
-class SignInUserInteractor(val signInRepository: SignInRepository) {
+class SignInUserInteractor(
+    val signInRepository: SignInRepository
+) {
     operator fun invoke(request: SignInRequest, result: IBaseResultListener<EnrollResponse>) =
         signInRepository.sendSignUpDataRequest(request, result)
 
-    operator fun invoke() = false
+    operator fun invoke() = signInRepository.isLogged()
 }
