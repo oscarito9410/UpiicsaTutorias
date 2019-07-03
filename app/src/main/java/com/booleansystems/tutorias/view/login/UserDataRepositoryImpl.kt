@@ -22,7 +22,10 @@ class UserDataRepositoryImpl(private val preferencesHelper: PreferenceHelper) : 
     override fun saveSessionData(response: EnrollResponse, isLogged: Boolean) {
         sharedPreferences.edit()
             .putString(Constants.USER_BOLETA, response.boleta)
-            .putString(Constants.USER_NAME, "${response.nombre}${response.apPaterno}${response.apMaterno}")
+            .putString(
+                Constants.USER_NAME, "${response.nombre}" +
+                        " " + "${response.apPaterno}" + " " + "${response.apMaterno}"
+            )
             .putBoolean(Constants.USER_LOGGED_IN, true).apply()
 
     }
