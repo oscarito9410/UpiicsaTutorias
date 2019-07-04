@@ -178,12 +178,23 @@
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:text="Mis tutorias (0)"
+                          android:text="Mis asesorias (0)"
                           android:textAlignment="center"
                           android:layout_gravity="center"
                           android:layout_marginTop="@dimen/big_separation_20"
+                          android:textColor="@android:color/black"
                           android:drawableTop="@drawable/ic_book"/>
 
+
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Opinar sobre mis \n  Asesorias"
+                          android:textAlignment="center"
+                          android:layout_gravity="start"
+                          android:layout_marginStart="@dimen/normal_separation"
+                          android:textColor="@android:color/black"
+                          android:layout_marginTop="@dimen/bigger_separation"
+                          android:drawableTop="@drawable/ic_rate_second"/>
             </LinearLayout>
 
 

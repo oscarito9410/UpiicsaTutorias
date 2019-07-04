@@ -45,8 +45,7 @@ open class SignInViewModel(val signInUserInteractor: SignInUserInteractor) : Vie
     }
 
     open fun onLoad() {
-        if (signInUserInteractor.invoke())
-            mSuccessSignIn.postValue(true)
+        mSuccessSignIn.postValue(signInUserInteractor.invoke())
     }
 
     open fun onSignUp(v: View) {

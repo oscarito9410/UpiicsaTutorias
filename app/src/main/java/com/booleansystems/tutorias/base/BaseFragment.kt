@@ -10,6 +10,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.booleansystems.tutorias.R
+import com.booleansystems.tutorias.view.home.HomeActivity
 
 /**
 
@@ -67,6 +68,13 @@ abstract class BaseFragment : Fragment() {
     fun goActivity(clazz: Class<out AppCompatActivity>) {
         val intent = Intent(activity, clazz)
         startActivity(intent)
+    }
+
+    fun notifyNavigateHome() {
+        activity?.apply {
+            startActivity(Intent(context, HomeActivity::class.java))
+            finish()
+        }
     }
 
 

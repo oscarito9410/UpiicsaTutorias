@@ -57,12 +57,7 @@ class SignInFragment : BaseFragment(), View.OnClickListener {
         super.onActivityCreated(savedInstanceState)
     }
 
-    fun notifyNavigateHome() {
-        activity?.apply {
-            startActivity(Intent(context, HomeActivity::class.java))
-            finish()
-        }
-    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

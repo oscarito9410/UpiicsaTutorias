@@ -59,9 +59,6 @@ class SignUpFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
     }
 
-    fun notifyNavigateHome() {
-        activity!!.finish()
-        activity!!.startActivity(Intent(context, HomeActivity::class.java))
-    }
+
 }
 

@@ -5,7 +5,6 @@
     <string name="text_sign_in">iniciar sesión</string>
     <string name="text_sign_up">Registrar</string>
     <string name="title_sign_up">Registro</string>
-    <string name="title_welcome">Bienvenido</string>
     <string name="text_instructions_sign_up">Por favor, ingresa la siguiente información</string>
     <string name="text_hint_name_sign_up">Nombre</string>
     <string name="text_hint_last_name_sign_up">Apellido paterno</string>
@@ -16,8 +15,9 @@
     <string name="error_min_length_boleta">El número de boleta consta de 10 digitos</string>
     <string name="error_confirm_password">La confirmación de password no coincide</string>
     <string name="title_news_fragment">Avisos</string>
-    <string name="title_search_fragment">Búsqueda de tutorias</string>
+    <string name="title_search_fragment">Búsqueda de asesorias</string>
     <string name="message_success_sign_up">Te has registrado correctamente!</string>
     <string name="student_not_found">El estudiante con el número de boleta ingresado no existe</string>
-    <string name="default_text_career">Lic. Ciencias de la Infórmatica</string>
+    <string name="default_text_career">Lic. Ciencias de la Informática</string>
+    <string name="title_welcome">Bienvenido</string>
 </resources>
