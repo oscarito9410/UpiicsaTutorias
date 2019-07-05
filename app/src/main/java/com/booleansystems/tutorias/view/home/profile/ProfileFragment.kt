@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.booleansystems.tutorias.R
 import com.booleansystems.tutorias.base.BaseFragment
 import com.booleansystems.tutorias.databinding.FragmentProfileBinding
@@ -23,7 +24,8 @@ import java.lang.Exception
  * Created by Oscar Emilio Pérez Mtz on 02/07/2019.
 operez@na-at.com.mx
  */
-class ProfileFragment : BaseFragment() {
+class ProfileFragment : BaseFragment(), View.OnClickListener {
+
 
     lateinit var target: Target
 
@@ -47,6 +49,20 @@ class ProfileFragment : BaseFragment() {
             tv_profile_boleta.text = it.boleta
         })
         return mBinding?.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        tvAlertOption.setOnClickListener(this)
+
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.tvAlertOption -> {
+                Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_newsFragment)
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -15,7 +15,9 @@
               tools:layout="@layout/fragment_search">
         <action android:id="@+id/action_searchFragment_to_detailFragment" app:destination="@id/detailFragment"
                 app:enterAnim="@anim/fade_in"
-                app:exitAnim="@anim/fade_out"/>
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"/>
     </fragment>
 
     <fragment android:id="@+id/detailFragment"
@@ -28,7 +30,15 @@
         <action android:id="@+id/action_newsFragment_to_searchFragment"
                 app:destination="@id/searchFragment"
                 app:enterAnim="@anim/fade_in"
-                app:exitAnim="@anim/fade_out"/>
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"/>
+        <action android:id="@+id/action_profileFragment_to_newsFragment"
+                app:enterAnim="@anim/fade_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"
+                app:destination="@id/newsFragment"/>
     </fragment>
 
 </navigation>

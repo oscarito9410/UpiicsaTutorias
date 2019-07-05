@@ -17,15 +17,13 @@
                   style="@style/MultiCurrencyTextParagraph1Black"
                   android:text="@string/title_news_fragment"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvListNews"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fadingEdgeLength="30dp"
-                android:focusable="true"
-                android:requiresFadingEdge="vertical">
 
-        </androidx.recyclerview.widget.RecyclerView>
+        <WebView
+                android:id="@+id/webViewNews"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="match_parent"/>
+
 
     </LinearLayout>
 </layout>
